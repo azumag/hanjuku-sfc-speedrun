@@ -1,12 +1,13 @@
 ## 1
 ### V
 ```mermaid
-graph LB
-    A([start])-->B{true?}
-    B--Yes-->C[process]
-    B--No-->D[exception]
-    C-->E([end])
-    D-->E
+graph LR
+	A((S1))--1/1-->B((S2))
+	B--1/1-->C((S3))
+	C--1/1-->A
+	A--0/0-->A
+	B--0/0-->B
+	C--0/0-->C
 ```
 ### C
 ### S
