@@ -189,59 +189,84 @@ graph TD
 graph TD
     Start[第3話開始<br/>目標: 0:26:00]
     
-    Start --> HeroStart[主人公<br/>切り札: イッテツーン,グリンボー×2]
-    Start --> ZeusStart[ゼウス<br/>切り札: なし]
-    Start --> VenusStart[ヴィーナス<br/>切り札: イッテツーン,グリンボー×2]
-    Start --> CocotteStart[ココット<br/>切り札: グリンボー×2,ミックミー]
+    Start --> Deploy[初期配置・切り札準備]
+    Deploy --> HeroStart[主人公: イッテツーン,グリンボー×2]
+    Deploy --> ZeusStart[ゼウス: なし]
+    Deploy --> VenusStart[ヴィーナス: イッテツーン,グリンボー×2]
+    Deploy --> CocotteStart[ココット: グリンボー×2,ミックミー]
     
-    %% 主人公の流れ
-    HeroStart --> Hero1[コラダイン城上で待機<br/>ランダム敵迎撃]
-    Hero1 --> Hero2[コラダイン城に入る]
-    Hero2 --> Hero3[パタゴーヌ城へ<br/>対ジェラート: 白兵→HP39でグリンボー]
-    Hero3 --> Hero4[パタゴーヌ城1マス左上で防衛]
-    Hero4 --> HeroWait1[防衛継続<br/>資金貯め]
-    HeroWait1 --> Hero5[ボス城3マス左上で待機<br/>切り札変更: クースカン×2,ゼンマイン<br/>兵士6人必須]
-    Hero5 --> HeroBoss[ボス城攻略]
+    %% 第1段階：コラダイン城の連携
+    HeroStart --> HeroWait1[主人公: コラダイン城上で待機]
+    VenusStart --> VenusWait1[ヴィーナス: コラダイン城右上で待機]
+    ZeusStart --> Zeus1[ゼウス: グリン城へ直進<br/>対ポセイドン: 白兵]
+    CocotteStart --> Cocotte1[ココット: メガパタ城へ]
     
-    %% ゼウスの流れ
-    ZeusStart --> Zeus1[グリン城へ直進<br/>対ポセイドン: 白兵]
-    Zeus1 --> Zeus2[リグア城2マス右上でキャンプ待機<br/>切り札追加: イッテツーン,グリンボー×2]
-    Zeus2 --> ZeusWait[防衛待機<br/>リグア城は残す]
-    ZeusWait --> Zeus3[リグア城攻略<br/>対ライム: 白兵]
+    HeroWait1 --> HeroBattle1[主人公: ランダム敵迎撃]
+    HeroBattle1 --> HeroSignal1{ランダム敵撃退?}
+    HeroSignal1 -->|完了| VenusGo1[ヴィーナス: コラダイン城攻略開始]
     
-    %% ヴィーナスの流れ
-    VenusStart --> Venus1[コラダイン城右上で待機]
-    Venus1 --> Venus2[コラダイン城攻略<br/>対ペコリーノ: 白兵→HP68でグリンボー×2]
-    Venus2 --> Venus3[イーピヨル城へ<br/>対ランダム敵・ミルフィーユ]
-    Venus3 --> Venus4[ドンダム城へ<br/>切り札変更: イッテツーン,グリンボー,ミックミー<br/>対ランダム敵・アポロン]
-    Venus4 --> Venus5[アバロン城1マス上で防衛]
-    Venus5 --> VenusWait[防衛継続]
+    VenusWait1 --> VenusGo1
+    VenusGo1 --> Venus2[ヴィーナス: コラダイン城攻略<br/>対ペコリーノ: 白兵→HP68でグリンボー×2]
     
-    %% ココットの流れ
-    CocotteStart --> Cocotte1[メガパタ城へ<br/>対ヘスティア: グリンボー→白兵<br/>対キール: ミックミー→グリンボー→白兵]
-    Cocotte1 --> Cocotte2[アバロン城へ直線移動<br/>切り札変更: イッテツーン,グリンボー×2<br/>対レモン: 切り札→白兵]
-    Cocotte2 --> Cocotte3[ドンダム城へ向かい城内待機]
-    Cocotte3 --> Cocotte4[メガパタ城で屋台待機]
-    Cocotte4 --> CocotteYatai{8月屋台出現?}
-    CocotteYatai -->|Yes| Cocotte5[屋台でクースカン21個購入]
-    CocotteYatai -->|No| Cocotte6[パタゴーヌ城へ]
-    Cocotte5 --> Cocotte6
-    Cocotte6 --> Cocotte7[パタゴーヌ城左上で防衛<br/>切り札: イッテツーン,グリンボー×2]
+    Venus2 --> HeroEnter1[主人公: コラダイン城に入る]
+    HeroEnter1 --> Hero2[主人公: コラダイン城から左上へ出撃<br/>パタゴーヌ城へ]
     
-    %% 時間経過と洞窟
-    HeroWait1 --> TimePass[時間経過<br/>6月→7月→8月→9月→10月→11月]
-    VenusWait --> TimePass
-    ZeusWait --> TimePass
-    Cocotte7 --> TimePass
+    %% 第2段階：各自の城攻略
+    Hero2 --> Hero3[主人公: パタゴーヌ城攻略<br/>対ジェラート: 白兵→HP39でグリンボー]
     
+    Venus2 --> Venus3[ヴィーナス: イーピヨル城へ<br/>対ランダム敵・ミルフィーユ]
+    
+    Cocotte1 --> Cocotte2[ココット: メガパタ城攻略<br/>対ヘスティア: グリンボー→白兵<br/>対キール: ミックミー→グリンボー→白兵]
+    
+    Zeus1 --> ZeusWait2[ゼウス: グリン城防衛<br/>※イーピヨル城からの敵に備える]
+    
+    %% 第3段階：後半の城攻略
+    Cocotte2 --> Cocotte3[ココット: アバロン城へ直線移動<br/>切り札: イッテツーン,グリンボー×2<br/>対レモン: 切り札→白兵]
+    
+    Venus3 --> Venus4[ヴィーナス: ドンダム城へ<br/>切り札: イッテツーン,グリンボー,ミックミー<br/>対ランダム敵・アポロン]
+    
+    Cocotte3 --> CocotteSignal1{アバロン城制圧?}
+    CocotteSignal1 -->|完了| Cocotte4[ココット: ドンダム城へ向かう]
+    Venus4 --> VenusSignal1{ドンダム城制圧?}
+    VenusSignal1 -->|完了| Cocotte5[ココット: ドンダム城に入って待機]
+    
+    Cocotte4 --> Cocotte5
+    
+    %% 防衛フェーズ
+    Hero3 --> Hero4[主人公: パタゴーヌ城1マス左上で防衛]
+    VenusSignal1 --> Venus5[ヴィーナス: アバロン城1マス上で防衛]
+    Cocotte5 --> Cocotte6[ココット: メガパタ城で屋台待機]
+    ZeusWait2 --> Zeus2[ゼウス: リグア城2マス右上でキャンプ<br/>切り札: イッテツーン,グリンボー×2]
+    
+    %% 時間経過と屋台
+    Hero4 --> TimePass[防衛しながら時間経過<br/>1500G貯める]
+    Venus5 --> TimePass
+    Zeus2 --> TimePass
+    Cocotte6 --> TimePass
+    
+    TimePass --> Month8[8月: 屋台チャンス]
+    Month8 --> Yatai{屋台出現?}
+    Yatai -->|Yes| Cocotte7[ココット: 屋台でクースカン21個購入]
+    Yatai -->|No| Cocotte8[ココット: パタゴーヌ城へ移動]
+    Cocotte7 --> Cocotte8
+    
+    Cocotte8 --> Cocotte9[ココット: パタゴーヌ城左上で防衛<br/>主人公と交代]
+    Cocotte9 --> Hero5[主人公: ボス城3マス左上へ<br/>切り札: クースカン×2,ゼンマイン<br/>兵士6人必須]
+    
+    %% 洞窟フェーズ
     TimePass --> GoldCheck{1500G以上?}
-    GoldCheck -->|Yes| Recruit[将軍募集<br/>騎馬キープ<br/>洞窟隊派遣]
+    GoldCheck -->|Yes| Recruit[将軍募集<br/>騎馬キープ・洞窟隊編成]
     GoldCheck -->|No| TimePass
     
-    Recruit --> Cave[洞窟隊突入<br/>兵士0人]
-    Cave --> Zeus3
-    Zeus3 --> CaveMerchant[11→12月<br/>洞窟商人<br/>エンジェリン6個<br/>マグネガキン7個<br/>ファバード24個以上]
+    Recruit --> CavePrep[洞窟隊: 兵士0人に調整]
+    CavePrep --> CaveEnter[洞窟隊: 洞窟突入]
+    CaveEnter --> ZeusSignal2{洞窟突入確認?}
+    ZeusSignal2 -->|完了| Zeus3[ゼウス: リグア城攻略<br/>対ライム: 白兵]
     
-    CaveMerchant --> HeroBoss
-    HeroBoss --> Clear[第3話クリア]
+    Zeus3 --> CaveMerchant[11→12月: 洞窟商人<br/>エンジェリン6個<br/>マグネガキン7個<br/>ファバード24個以上]
+    
+    CaveMerchant --> Boss[主人公: ボス城攻略]
+    Hero5 --> Boss
+    Boss --> Clear[第3話クリア]
+
 ```
