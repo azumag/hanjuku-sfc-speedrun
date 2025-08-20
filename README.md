@@ -184,3 +184,64 @@ graph TD
 【③にせヒーロー＋兵士１人－ノリウツール＝４５＋４－５３＝０以下】
 ```
 
+# 3話
+```mermaid
+graph TD
+    Start[第3話開始<br/>目標: 0:26:00]
+    
+    Start --> HeroStart[主人公<br/>切り札: イッテツーン,グリンボー×2]
+    Start --> ZeusStart[ゼウス<br/>切り札: なし]
+    Start --> VenusStart[ヴィーナス<br/>切り札: イッテツーン,グリンボー×2]
+    Start --> CocotteStart[ココット<br/>切り札: グリンボー×2,ミックミー]
+    
+    %% 主人公の流れ
+    HeroStart --> Hero1[コラダイン城上で待機<br/>ランダム敵迎撃]
+    Hero1 --> Hero2[コラダイン城に入る]
+    Hero2 --> Hero3[パタゴーヌ城へ<br/>対ジェラート: 白兵→HP39でグリンボー]
+    Hero3 --> Hero4[パタゴーヌ城1マス左上で防衛]
+    Hero4 --> HeroWait1[防衛継続<br/>資金貯め]
+    HeroWait1 --> Hero5[ボス城3マス左上で待機<br/>切り札変更: クースカン×2,ゼンマイン<br/>兵士6人必須]
+    Hero5 --> HeroBoss[ボス城攻略]
+    
+    %% ゼウスの流れ
+    ZeusStart --> Zeus1[グリン城へ直進<br/>対ポセイドン: 白兵]
+    Zeus1 --> Zeus2[リグア城2マス右上でキャンプ待機<br/>切り札追加: イッテツーン,グリンボー×2]
+    Zeus2 --> ZeusWait[防衛待機<br/>リグア城は残す]
+    ZeusWait --> Zeus3[リグア城攻略<br/>対ライム: 白兵]
+    
+    %% ヴィーナスの流れ
+    VenusStart --> Venus1[コラダイン城右上で待機]
+    Venus1 --> Venus2[コラダイン城攻略<br/>対ペコリーノ: 白兵→HP68でグリンボー×2]
+    Venus2 --> Venus3[イーピヨル城へ<br/>対ランダム敵・ミルフィーユ]
+    Venus3 --> Venus4[ドンダム城へ<br/>切り札変更: イッテツーン,グリンボー,ミックミー<br/>対ランダム敵・アポロン]
+    Venus4 --> Venus5[アバロン城1マス上で防衛]
+    Venus5 --> VenusWait[防衛継続]
+    
+    %% ココットの流れ
+    CocotteStart --> Cocotte1[メガパタ城へ<br/>対ヘスティア: グリンボー→白兵<br/>対キール: ミックミー→グリンボー→白兵]
+    Cocotte1 --> Cocotte2[アバロン城へ直線移動<br/>切り札変更: イッテツーン,グリンボー×2<br/>対レモン: 切り札→白兵]
+    Cocotte2 --> Cocotte3[ドンダム城へ向かい城内待機]
+    Cocotte3 --> Cocotte4[メガパタ城で屋台待機]
+    Cocotte4 --> CocotteYatai{8月屋台出現?}
+    CocotteYatai -->|Yes| Cocotte5[屋台でクースカン21個購入]
+    CocotteYatai -->|No| Cocotte6[パタゴーヌ城へ]
+    Cocotte5 --> Cocotte6
+    Cocotte6 --> Cocotte7[パタゴーヌ城左上で防衛<br/>切り札: イッテツーン,グリンボー×2]
+    
+    %% 時間経過と洞窟
+    HeroWait1 --> TimePass[時間経過<br/>6月→7月→8月→9月→10月→11月]
+    VenusWait --> TimePass
+    ZeusWait --> TimePass
+    Cocotte7 --> TimePass
+    
+    TimePass --> GoldCheck{1500G以上?}
+    GoldCheck -->|Yes| Recruit[将軍募集<br/>騎馬キープ<br/>洞窟隊派遣]
+    GoldCheck -->|No| TimePass
+    
+    Recruit --> Cave[洞窟隊突入<br/>兵士0人]
+    Cave --> Zeus3
+    Zeus3 --> CaveMerchant[11→12月<br/>洞窟商人<br/>エンジェリン6個<br/>マグネガキン7個<br/>ファバード24個以上]
+    
+    CaveMerchant --> HeroBoss
+    HeroBoss --> Clear[第3話クリア]
+```
