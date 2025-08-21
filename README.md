@@ -20,6 +20,9 @@
 - [2話](charts/2.md)
 - [3話](charts/3.md)
 
+### 簡易版
+- [3話](charts/beginner/3.md)
+
 # 全体知識
 
 ## 切り札の卵落ち判定
