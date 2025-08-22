@@ -1,0 +1,6 @@
+- [done] チャート内容をmdへ
+- 半熟攻略ページ内容をすべて md 化: https://gcgx.games/hanjuku/
+- 攻略wiki内容をすべて md 化：https://wikiwiki.jp/hjksfc/%E3%82%A8%E3%83%83%E3%82%B0%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC
+- 解析サイト内容をすべて md: https://triplequotation.web.fc2.com/Analyze/SFC_EggHero/EggHero.html
+- blog内容を md へ: http://blog.livedoor.jp/hanjukueiyu/tag/%E5%8D%8A%E7%86%9F%E8%8B%B1%E9%9B%84
+- 
